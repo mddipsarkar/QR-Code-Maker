@@ -1,0 +1,134 @@
+<style> 
+	#qr-container{
+		width: 100%;
+		margin-top: 50px;
+	}
+	#qr-error-msg-container{
+		width: 80%;
+
+	}
+	#qr-form-container{
+		width: 80%;
+		margin: auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	#qr-download-btn{
+		background-color: transparent;
+		font-weight: bold;
+		font-size: 50px;
+	}
+	#qr-error-msg{
+		width: auto;
+		background-color: bisque;
+		padding: 15px;
+		margin: auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#qr-call-btn, #qr-download-btn {
+		width: 20%;
+		border-radius: 0px;
+		background-color: #f7f7f7;
+		color: black;
+		border: 12px solid #8C8A8C;
+		padding: 15px;
+		font-family: poppins, sans-serif;
+		outline: none;
+	}
+	#qr-input-content{
+		width: 80%;
+		border-radius: 0px;
+		color: #FF6666;
+		background-color: white;
+		border: 12px solid #FF6666;
+		padding: 15px;
+		font-family: poppins, sans-serif;
+		outline: none;
+	}
+	#qr-download-section{
+		text-align: center;
+	}
+
+	@media screen and (max-width:800px) {
+		#qr-form-container{
+			width: 100%;
+			text-align: center;
+			flex-direction: column;
+		}
+		#qr-error-msg-container{
+		width: auto;
+	}
+	
+		#qr-input-content{
+			width: auto;
+			float: none;
+		}
+		#qr-call-btn , #qr-download-btn, #qr-error-msg{
+			width: auto;
+			margin-top: 10px;			
+		}
+		#qr-download-btn{
+			width: 100%;
+		}
+	}
+</style>
+<div id="qr-form-container">
+	
+		<input class="form-control" id="qr-input-content" placeholder="Enter text/link" required="" type="text" /> 
+		<br />	
+			<button id="qr-call-btn" type="button">Generate</button> 		
+	
+	
+</div>
+
+<div id="qr-error-msg-container" style="margin: auto;"> 
+
+	<p><br /></p>
+	<div id="qr-error-msg" style="border-radius: 0%; font-family: poppins, sans-serif; margin: auto;">
+		<strong>Warning! Please Enter Something...</strong> 
+		<button id="close-qr-error" style="background-color: transparent; border: none; font-size: 16px; font-weight: bold;" type="button">?-</button>
+	</div>
+	</div>
+<div class="text-center" id="qr-download-section"> 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+
+<script> 
+
+	
+
+	function chartCall(value) { 
+		return $('<div/>').text(value).html(); 
+	} 
+
+	$('#close-qr-error').on("click", function(){
+		$('#qr-error-msg').hide();
+	});
+
+	$(function () { 
+		$('#qr-error-msg').hide();
+		$('#qr-call-btn').click(function () {
+			if($('#qr-input-content').val() != 0){
+				$('#qr-error-msg').hide();
+			$("#qr-download-section").empty();
+			let finalURL = 'https://chart.googleapis.com/chart?cht=qr&chl=' + chartCall($('#qr-input-content').val()) + '&chs=200x200&chld=L|0'; 
+			var qrImg = "<img src='' class='qr-code' />";
+			$("#qr-download-section").append(qrImg);
+			$('.qr-code').attr('src', finalURL); 
+			var qrSpace = "<p><br></p>";
+			var qrDwnldBtn= "<a  href="+finalURL+"> <button id='qr-download-btn' type='button' style='font-size: 12px;'>Download</button> </a> ";
+			$("#qr-download-section").append(qrSpace,qrDwnldBtn);
+			}
+			else{
+                $("#qr-download-section").empty();
+				$('#qr-error-msg').show();
+			}
+		}); 
+	}); 
+</script></div>
+
+
+<p>&nbsp;</p><p><br /></p><h2 style="text-align: left;">HOW TO DOWNLOAD A QR CODE?</h2><div><br /></div><h3 style="text-align: left;">Step-1:</h3><div><b>Generate QR Code</b></div><div><br /></div><h3 style="text-align: left;">Step-2:</h3><div><br /></div><div><b>Right Click on QR Code Image</b></div><div><br /></div><h3 style="text-align: left;">Step-3:</h3><div><br /></div><div><b>Save Image To Your Computer</b></div><h2 style="text-align: left;"><br /></h2><h2 style="text-align: left;">Online QR Code Generator Tool</h2><div><br /></div><h3 style="text-align: left;">What is QR Code?</h3><p>QR codes are a type of barcode that can be scanned by a QR code reader in order to obtain information. They are encoded with data related to a certain subject, and they can be used in many different ways. QR codes are useful for storing URLs, contact information, and more.</p><p>QR codes are a form of 2-dimensional barcode that can store large amounts of data. QR codes are most often used to encode URLs for quick access, but they can also be used to encode any type of data. QR codes are read using a phone's camera and an app, which decodes the information encoded in the code and takes the user to the desired website or other data.</p><p>QR codes are a type of matrix barcode, or two-dimensional code, that is used to convey information. They are most commonly used in marketing. QR codes can be scanned by smartphones and can be used to direct users to websites, social media pages, or videos.</p><p>QR (Quick Response) codes are a type of two-dimensional barcode. They are used to encode information and can be read by smartphones, tablet computers, and dedicated QR readers. The QR code was invented in Japan by Denso-Wave in 1994 to track vehicles during the manufacturing process. QR codes are now commonly used for storing URLs and other information which can be accessed via a smartphone's web browser.</p><p>A QR code, or Quick Response code, is a machine-readable code consisting of black modules arranged in a square pattern on a white background. These black modules are actually tiny square cells that can each contain one of 256 possible colors. QR codes have been used in advertising and packaging to perform functions such as product tracking and marketing.</p><p><br /></p><h3 style="text-align: left;">Where was QR Code Found?</h3><div><p>QR codes were first popularized in Japan, but have since become extremely common in other parts of the world. Today, QR codes are used in marketing and advertising. In Japan, QR codes are often used for product tracking. They can also be used for various functions including product authentication, product tracking, customer service, product information, and more.</p><p>QR codes are also used in other ways. You could, for example put a QR code on an ad that links to a video or a website. Or you could write a QR code on a business card with a link to an online form to help your customers contact a company. You can also use QR codes to find information online.</p></div><h3 style="text-align: left;"><br /></h3><h3 style="text-align: left;">QR Code Maker</h3><p>QR code maker online tool is a web-based QR code generator that allows the user to create QR codes quickly and easily from any URL, text, or image. The QR code generator is extremely simple to use and does not require any coding knowledge to use, which makes it an easy and efficient method of QR code generation. This website is free and can be used to create QR codes for both personal and commercial use. The QR code generator is available to use in any country.</p><p><br /></p><div><br /></div>
